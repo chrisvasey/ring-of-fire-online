@@ -16,3 +16,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/game', function () {
+    return Redirect('/');
+});
+
+Route::get('/game/new', 'GameController@new');
+Route::get('/game/{code}', 'GameController@view');
