@@ -23,3 +23,4 @@ Route::get('/game', function () {
 
 Route::get('/game/new', 'GameController@new');
 Route::get('/game/{code}', 'GameController@view');
+Route::get('/game/{code}/{playerId}', 'GameController@createPlayerCookie');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Cookie;
 use App\Game;
 
 class GameController extends Controller
@@ -29,5 +30,11 @@ class GameController extends Controller
         if ($game->status == 'new') {
             return view('join', compact('game'));
         }
+    }
+    public function createPlayerCookie($code, $playerId)
+    {
+        $minutes = 60;
+        $cookie = cookie($code, $playerId, $minutes);
+        return Redirect('/game/'.$code)->cookie($cookie);
     }
 }

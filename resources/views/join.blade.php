@@ -15,7 +15,7 @@
             </div>
             If they are joining from the main menu the game code is: <strong>{{ $game->code  }}</strong>
             <hr>
-            @livewire('join-game')
+            @livewire('join-game', ['game' => $game])
         </div>
 </div>
 
