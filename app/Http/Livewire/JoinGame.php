@@ -19,6 +19,7 @@ class JoinGame extends Component
     public $message;
     public $partyLeader = false;
     public $joined = false;
+    public $leader;
 
     protected $player;
     protected $game;
@@ -38,6 +39,11 @@ class JoinGame extends Component
         return Redirect('/game/'.$this->code.'/'.$this->playerId);
     }
 
+    public function startGame()
+    {
+        # code...
+    }
+
     public function changeName()
     {
         $player = Player::find($this->playerId);
@@ -55,6 +61,10 @@ class JoinGame extends Component
         $this->gameId = $game->id;
         $this->code = $game->code;
         $this->game = $game;
+
+        if ($this->game->players->first()) {
+            $this->leader = $this->game->players->first();
+        }
 
         if (request()->cookie($this->code)) {
             $this->player = Player::find(request()->cookie($this->code));
