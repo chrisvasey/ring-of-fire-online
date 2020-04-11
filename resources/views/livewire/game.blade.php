@@ -35,6 +35,9 @@
                         @endif
                     @else
                         <h1 class="text-center">Current Players Turn: <span class="player-text {{ $currentPlayer->color }}">{{ $currentPlayer->name }}</span> 🍺🍻</h1>
+                        @if ($state == 'ready-to-draw')
+                            <h3 class="text-center">Waiting for them to pull a card..</h3>
+                        @endif
                         @if ($state == 'drawn-waiting' && $drawnCard)
                             <h3 class="text-center">{{ $currentPlayer->name }} pulled the <span style="font-weight: 600">{{ $drawnCard->prettyValue() }}</span></h3>
                             <p class="text-center">{{ $drawnCard->instructions() }}</p>
