@@ -53,6 +53,9 @@ class Game extends Model
     public function updateState($state)
     {
         $this->state = $state;
+        if ($state == 'ended') {
+            $this->status = 'ended';
+        }
         $this->save();
     }
 
@@ -68,8 +71,11 @@ class Game extends Model
 
     public function createCards()
     {
-        $values = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
-        $suits  = ['S', 'H', 'D', 'C'];
+        // $values = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
+        // $suits  = ['S', 'H', 'D', 'C'];
+
+        $values = ['2', '3'];
+        $suits  = ['S'];
 
         foreach ($suits as $suit) {
             foreach ($values as $value) {

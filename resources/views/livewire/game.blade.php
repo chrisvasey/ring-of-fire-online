@@ -13,6 +13,7 @@
                 <h4><span class="player-text {{ $player->color }}">{{ $player->name }}@if($player->id == $playerId) (you)@endif</span> @if($player->turnCheck()) - This players turn @endif</h4>
             @endforeach
         </div>
+        @if ($state != 'ended')
         <div class="col-md-6 col-xs-12">
             <div class="row">
                 <div class="col-md-12">
@@ -56,5 +57,18 @@
                 </div>
             </div>
         </div>
+        @else
+        <div class="col-md-6 col-xs-12">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="text-center mt-4">
+                        <h1>That's all the cards done!</h1>
+                        <h3>Hope you are all okay.</h3>
+                        <a href="/game/new" class="btn btn-success">Start new game</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @endif
     </div>
 </div>

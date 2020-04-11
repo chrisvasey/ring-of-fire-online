@@ -38,9 +38,20 @@ class Game extends Component
 
     public function nextTurn()
     {
+        self::refeshGame();
+        if ($this->cardsRemaining == 0) {
+            return self::endGame();
+        }
         $game = GameObj::find($this->gameId);
         $game->updateState('ready-to-draw');
         $game->nextPlayer();
+    }
+
+    public function endGame()
+    {
+        $this->state = 'ended';
+        $game = GameObj::find($this->gameId);
+        $game->updateState('ended');
     }
 
     public function mount($game, $player)
@@ -69,6 +80,9 @@ class Game extends Component
         $this->cardsRemaining = $game->remainingCards()->count();
         $this->drawnCard = $game->currentCard();
         $this->state = $game->state;
+        if ($game->state == 'ended') {
+            self::endGame();
+        }
     }
 
     public function render()
