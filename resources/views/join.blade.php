@@ -9,7 +9,7 @@
                 We are waiting for the game to start, to invite people sent them this link: <br>
 
                 <div class="input-group mb-2 mt-2">
-                  <input type="text" class="form-control" id="copy-code" value="{{ url('/game'.$game->code) }}">
+                  <input type="text" class="form-control text-center" id="copy-code" value="{{ url('/game/'.$game->code) }}">
                   <div class="input-group-append">
                     <button class="btn btn-primary" type="button" id="clipboard-copy" data-clipboard-target="#copy-code">Copy</button>
                   </div>

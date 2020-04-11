@@ -80,9 +80,9 @@ class JoinGame extends Component
         $this->game = $game;
 
         $this->players = [
-            ['name' => 'Chris'],
-            ['name' => 'Grace'],
-            ['name' => 'jame'],
+            ['name' => 'Chris', 'color' => 'cyan'],
+            ['name' => 'Grace', 'color' => 'yellow'],
+            ['name' => 'Jam', 'color' => 'orange'],
         ];
 
         if ($this->game->players->first()) {
