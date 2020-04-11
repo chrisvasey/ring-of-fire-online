@@ -32,9 +32,11 @@ class JoinGame extends Component
     public function join(SessionManager $session)
     {
         if ($this->playerName) {
+            $game = Game::find($this->gameId);
             $player = new Player;
             $player->name = $this->playerName;
-            $player->game_id = $this->gameId;
+            $player->game_id = $game->id;
+            $player->color = $game->getAvailableColor();
             $player->save();
             $this->playerId = $player->id;
         }
@@ -79,11 +81,7 @@ class JoinGame extends Component
         $this->code = $game->code;
         $this->game = $game;
 
-        $this->players = [
-            ['name' => 'Chris', 'color' => 'cyan'],
-            ['name' => 'Grace', 'color' => 'yellow'],
-            ['name' => 'Jam', 'color' => 'orange'],
-        ];
+        $this->players = $game->players;
 
         if ($this->game->players->first()) {
             $this->leader = $this->game->players->first();
@@ -104,6 +102,13 @@ class JoinGame extends Component
 
         self::checkIfGameStarted();
     }
+
+    public function refreshPlayers()
+    {
+        $game = Game::find($this->gameId);
+        return $this->players = $game->players;
+    }
+
     public function render()
     {
         return view('livewire.join-game');

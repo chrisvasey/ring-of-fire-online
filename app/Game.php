@@ -54,4 +54,13 @@ class Game extends Model
         $this->save();
         return 'ended';
     }
+
+    public function getAvailableColor()
+    {
+        $colors = ['black', 'blue', 'cyan', 'yellow', 'orange', 'red', 'green'];
+        $usedColors = $this->players->pluck('color')->all();
+
+        return collect(array_diff($colors, $usedColors))->shuffle()->first();
+        ;
+    }
 }

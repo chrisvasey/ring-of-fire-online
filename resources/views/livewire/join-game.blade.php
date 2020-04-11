@@ -37,16 +37,16 @@
         @endif
     </div>
 
-    <div class="col-md-6 col-xs-12  ">
+    <div class="col-md-6 col-xs-12">
         <h3>Joined Players</h3>
-        <div class="row">
+        <div class="row" wire:poll.750ms="refreshPlayers">
             @foreach ($players as $player)
                 <div class="col-md-3 col-xs-6">
                     <div class="mt-2 mb-4">
-                        <div class="avatar {{ $player['color'] }}">
-                            <h3>{{ strtoupper(mb_substr($player['name'], 0, 1, "UTF-8")) }}</h3>
+                        <div class="avatar {{ $player->color }}">
+                            <h3>{{ strtoupper(mb_substr($player->name, 0, 1, "UTF-8")) }}</h3>
                         </div>
-                        <h4 class="text-center mt-2">{{ $player['name'] }}</h4>
+                        <h4 class="text-center mt-2">{{ $player->name }}</h4>
                     </div>
                 </div>
             @endforeach
