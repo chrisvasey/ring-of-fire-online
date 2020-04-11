@@ -31,6 +31,9 @@ class JoinGame extends Component
 
     public function join(SessionManager $session)
     {
+        if (!$this->playerName || strlen($this->playerName) <= 4) {
+            return $this->message = "Name must be at least 4 characters long!";
+        };
         if ($this->playerName) {
             $game = Game::find($this->gameId);
             $player = new Player;
@@ -58,21 +61,24 @@ class JoinGame extends Component
 
     public function checkIfGameStarted()
     {
-        if ($this->gameStarted) {
+        if (Game::find($this->gameId)->status == 'in-progress') {
             return Redirect('/game/'.$this->code.'/play');
         }
     }
 
     public function changeName()
     {
+        if (!$this->playerName || strlen($this->playerName) <= 4) {
+            return $this->message = "Name must be at least 4 characters long!";
+        };
         $player = Player::find($this->playerId);
         if ($player) {
             $player->name = $this->playerName;
             $player->save();
-            return $this->message = "Name Saved!";
+            return $this->message = "Name changed!";
         }
 
-        return $this->message = "Name not saved!";
+        return $this->message = "Name not changed!";
     }
 
     public function mount(SessionManager $session, $game)
@@ -107,6 +113,11 @@ class JoinGame extends Component
     {
         $game = Game::find($this->gameId);
         return $this->players = $game->players;
+    }
+
+    public function clearMessage()
+    {
+        $this->message = null;
     }
 
     public function render()

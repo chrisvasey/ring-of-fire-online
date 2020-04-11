@@ -1,6 +1,15 @@
 <div class="row">
-    <div class="col-md-12 col-xs-12 text-center">
-        <h3>{{ $message }}</h3>
+    <div class="col-md-12 col-xs-12 text-center" >
+            @if ($message)
+            <div class="col-md-6 offset-md-3 col-xs-12">
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                  {{ $message }}
+                  <button wire:click="clearMessage" type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+            </div>
+        @endif
     </div>
 
     <div class="col-md-6 col-xs-12 text-center">
@@ -53,5 +62,6 @@
         </div>
     </div>
 
+    <div wire:poll.750ms="checkIfGameStarted"></div>
 
 </div>
