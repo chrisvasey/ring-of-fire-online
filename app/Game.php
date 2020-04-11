@@ -29,22 +29,21 @@ class Game extends Model
 
     public function nextPlayer()
     {
-        $nextPlayer = null;
-        $found = false;
-        foreach ($this->players as $player) {
-            if ($found) {
-                $nextPlayer = $player;
-            }
-            if ($player->id  == $this->current_players_turn_id) {
-                $found = true;
+        $players = $this->players->toArray();
+        $nextPlayerKey = null;
+        foreach ($players as $key => $value) {
+            if ($value['id'] == $this->current_players_turn_id) {
+                $nextPlayerKey = $key + 1;
             }
         }
 
-        if (!$nextPlayer) {
-            $nextPlayer = $this->players->first();
+        if (isset($players[$nextPlayerKey])) {
+            $nextPlayer = $players[$nextPlayerKey];
+        } else {
+            $nextPlayer = $players[0];
         }
 
-        $this->current_players_turn_id = $nextPlayer->id;
+        $this->current_players_turn_id = $nextPlayer['id'];
         $this->save();
 
         return $nextPlayer;
