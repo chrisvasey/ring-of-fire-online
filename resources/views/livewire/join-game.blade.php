@@ -61,7 +61,4 @@
             @endforeach
         </div>
     </div>
-
-    <div wire:poll.750ms="checkIfGameStarted"></div>
-
 </div>

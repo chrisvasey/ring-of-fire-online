@@ -112,7 +112,8 @@ class JoinGame extends Component
     public function refreshPlayers()
     {
         $game = Game::find($this->gameId);
-        return $this->players = $game->players;
+        $this->players = $game->players;
+        return self::checkIfGameStarted();
     }
 
     public function clearMessage()
