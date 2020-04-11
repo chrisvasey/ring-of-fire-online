@@ -20,12 +20,33 @@ class GameController extends Controller
         return redirect('game/'.$game->code);
     }
 
+    public function joinCode(Request $request)
+    {
+        if (!$request->code) {
+            return Back()->with('error-message', 'You must put in a code');
+        }
+
+        $game = Game::where('code', $request->code)->first();
+
+        if (!$game) {
+            return Back()->with('error-message', 'No game found with that code, maybe ask for it again?');
+        }
+
+        if ($game->status != 'new') {
+            return Back()->with('error-message', "This game has already started or finished and can no longer be joined, maybe create a new one if your friends aren't too drunk!");
+        }
+
+        if ($game->status == 'new') {
+            return Redirect('/game/'.$game->code);
+        }
+    }
+
     public function join($code)
     {
         $game = Game::where('code', $code)->first();
 
         if (!$game) {
-            return Abort(404);
+            return Redirect('/')->with('error-message', "Couldn't find that game, maybe try making a new one");
         }
 
         if ($game->status == 'new') {
@@ -34,7 +55,7 @@ class GameController extends Controller
 
         //If the game has ended, redirect to menu
         if ($game->status == 'ended') {
-            return Redirect('/')->with('warning_message', 'This game has ended, started a new one');
+            return Redirect('/')->with('error-message', 'This game has ended, started a new one');
         }
 
         //If the game is in progress
@@ -45,7 +66,7 @@ class GameController extends Controller
                     return Redirect('/game/'.$game->code.'/play');
                 }
             }
-            return Redirect('/')->with('warning_message', 'This game has already started, you will have to join the next one');
+            return Redirect('/')->with('error-message', 'This game has already started, you will have to join the next one');
         }
     }
 
@@ -71,7 +92,7 @@ class GameController extends Controller
 
         //If the game has ended, redirect to menu
         if ($game->status == 'ended') {
-            return Redirect('/')->with('warning_message', 'This game has ended, started a new one');
+            return Redirect('/')->with('error-message', 'This game has ended, started a new one');
         }
 
         //If the game is in progress
@@ -79,11 +100,11 @@ class GameController extends Controller
             if (request()->cookie($game->code)) {
                 $player = Player::find(request()->cookie($game->code));
                 if (!$player) {
-                    return Redirect('/')->with('warning_message', 'This game has already started, you will have to join the next one');
+                    return Redirect('/')->with('error-message', 'This game has already started, you will have to join the next one');
                 }
                 return view('game', compact('game', 'player'));
             }
-            return Redirect('/')->with('warning_message', 'This game has already started, you will have to join the next one');
+            return Redirect('/')->with('error-message', 'This game has already started, you will have to join the next one');
         }
     }
 }

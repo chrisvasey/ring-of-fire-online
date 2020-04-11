@@ -21,10 +21,15 @@ Route::get('/instructions', function () {
     return view('instructions');
 });
 
+Route::get('/join', function () {
+    return view('join-code');
+});
+
 Route::get('/game', function () {
     return Redirect('/');
 });
 
+Route::post('/game/join', 'GameController@joinCode');
 Route::get('/game/new', 'GameController@new');
 Route::get('/game/{code}', 'GameController@join');
 Route::get('/game/{code}/play', 'GameController@play');

@@ -21,6 +21,10 @@
             Ring of Fire: Online 🍺
         </div>
 
+        @if(Session::has('error-message'))
+            <p class="alert alert-danger">{{ Session::get('error-message') }}</p>
+        @endif
+
         <div class="links">
             <a href="/game/new">New Game</a>
             <a href="/join">Join Game</a>

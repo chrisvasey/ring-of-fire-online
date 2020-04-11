@@ -8,6 +8,10 @@
                 <h2>Welcome to Ring of Fire! 🍺</h2>
                 We are waiting for the game to start, to invite people sent them this link: <br>
 
+                @if(Session::has('error-message'))
+                <p class="alert alert-info">{{ Session::get('error-message') }}</p>
+                @endif
+
                 <div class="input-group mb-2 mt-2">
                   <input type="text" class="form-control text-center" id="copy-code" value="{{ url('/game/'.$game->code) }}">
                   <div class="input-group-append">
