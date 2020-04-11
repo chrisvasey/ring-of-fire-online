@@ -22,6 +22,8 @@ class JoinGame extends Component
     public $leader;
     public $gameStarted = false;
 
+    public $players;
+
     protected $player;
     protected $game;
 
@@ -76,6 +78,12 @@ class JoinGame extends Component
         $this->gameId = $game->id;
         $this->code = $game->code;
         $this->game = $game;
+
+        $this->players = [
+            ['name' => 'Chris'],
+            ['name' => 'Grace'],
+            ['name' => 'jame'],
+        ];
 
         if ($this->game->players->first()) {
             $this->leader = $this->game->players->first();

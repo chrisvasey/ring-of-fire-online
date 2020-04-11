@@ -57,3 +57,39 @@ html, body {
 .m-b-md {
     margin-bottom: 30px;
 }
+
+
+.avatar {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    vertical-align: middle;
+    width: 50px;
+    height: 50px;;
+    border-radius: 50%;
+    h3 {
+        color: white;
+        line-height: 53px;
+        text-align: center;
+    }
+}
+
+.avatar.black {
+    background: #173F5F;
+}
+
+.avatar.blue {
+    background: #20639B;
+}
+
+.avatar.cyan {
+    background: #3CAEA3;
+}
+
+.avatar.yellow {
+    background: #F6D55C;
+}
+
+.avatar.orange {
+    background: #ED553b;
+}
