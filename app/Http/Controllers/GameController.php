@@ -83,6 +83,7 @@ class GameController extends Controller
                 }
                 return view('game', compact('game', 'player'));
             }
+            return Redirect('/')->with('warning_message', 'This game has already started, you will have to join the next one');
         }
     }
 }

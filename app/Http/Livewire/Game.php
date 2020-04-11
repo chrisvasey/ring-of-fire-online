@@ -16,7 +16,8 @@ class Game extends Component
     public $cardsRemaining;
     public $yourTurn = false;
     public $playerName;
-    public $cardMessage = "Click card to draw..";
+    public $cardMessage;
+    public $localMessage;
     public $playerId;
     public $gameId;
     protected $player;
@@ -25,6 +26,7 @@ class Game extends Component
 
     public function drawCard()
     {
+        self::refeshGame();
         if ($this->currentPlayer->id == $this->playerId) {
             $player = Player::find($this->playerId);
             $this->drawnCard = $player->drawCard();
@@ -47,6 +49,7 @@ class Game extends Component
         $this->playerId = $player->id;
         $this->players = $game->players;
         $this->game = $game;
+        $this->state = $game->state;
 
         $this->playerName = $player->name;
         $this->currentPlayer = Player::find($game->current_players_turn_id);
@@ -56,6 +59,7 @@ class Game extends Component
         if ($this->game->players->first()) {
             $this->leader = $this->game->players->first();
         }
+        self::refeshGame();
     }
 
     public function refeshGame()

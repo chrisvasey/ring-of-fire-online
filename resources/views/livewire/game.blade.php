@@ -16,7 +16,29 @@
         <div class="col-md-6 col-xs-12">
             <div class="row">
                 <div class="col-md-12">
-                    <h1 class="text-center">Current Players Turn: <span class="player-text {{ $currentPlayer->color }}">{{ $currentPlayer->name }}</span> 🍺🍻</h1>
+                    @if ($currentPlayer->id == $playerId)
+                        @if ($state == 'ready-to-draw')
+                            <h1 class="text-center">It's your turn, good luck!</h1>
+                            <div class="text-center">
+                                <button class="btn btn-danger btn-lg mt-2" wire:click="drawCard">Draw Card</button>
+                            </div>
+                        @endif
+                        @if ($state == 'drawn-waiting' && $drawnCard)
+                            <h1 class="text-center">You pulled the {{ $drawnCard->prettyValue() }}</h1>
+                            <p class="text-center">{{ $drawnCard->instructions() }}</p>
+                        @endif
+                        @if ($state == 'drawn-waiting' && $currentPlayer->id == $playerId && $drawnCard)
+                            <div class="text-center">
+                                <button class="btn btn-success btn-lg mt-2" wire:click="nextTurn">Done, end turn</button>
+                            </div>
+                        @endif
+                    @else
+                        <h1 class="text-center">Current Players Turn: <span class="player-text {{ $currentPlayer->color }}">{{ $currentPlayer->name }}</span> 🍺🍻</h1>
+                        @if ($state == 'drawn-waiting' && $drawnCard)
+                            <h3 class="text-center">{{ $currentPlayer->name }} pulled the <span style="font-weight: 600">{{ $drawnCard->prettyValue() }}</span></h3>
+                            <p class="text-center">{{ $drawnCard->instructions() }}</p>
+                        @endif
+                    @endif
                 </div>
             </div>
             <div class="row">
@@ -24,16 +46,12 @@
                     <div class="card-stage mt-4">
                         <div class="card-wrap">
                             @if ($state == 'ready-to-draw')
-                                <img wire:click="drawCard" class="card-placeholder img-fluid" src="/img/back-of-card.jpg">
+                                <img class="card-placeholder img-fluid" src="/img/back-of-card.jpg">
                             @endif
                             @if ($drawnCard && $state == 'drawn-waiting')
                                 <img class="card-placeholder img-fluid" src="/img/cards/{{ strtoupper($drawnCard->value) }}.svg">
                             @endif
                         </div>
-                        <h3 class="text-center mt-4">{{ $cardMessage }}</h3>
-                        @if ($state == 'drawn-waiting' && $currentPlayer->id == $playerId)
-                            <button class="btn btn-success btn-block" wire:click="nextTurn">End your turn</button>
-                        @endif
                     </div>
                 </div>
             </div>
