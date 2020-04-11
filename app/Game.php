@@ -71,11 +71,8 @@ class Game extends Model
 
     public function createCards()
     {
-        // $values = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
-        // $suits  = ['S', 'H', 'D', 'C'];
-
-        $values = ['2', '3'];
-        $suits  = ['S'];
+        $values = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
+        $suits  = ['S', 'H', 'D', 'C'];
 
         foreach ($suits as $suit) {
             foreach ($values as $value) {
