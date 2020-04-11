@@ -19,6 +19,8 @@
                   </div>
                 </div>
                 If they are joining from the main menu the game code is: <strong>{{ $game->code  }}</strong>
+                <br>
+                If you want something to do while you wait, you can read the game rules <a href="/rules" target="_blank">here</a>.
             </div>
             <div class="col-md-12">
                 <hr>

@@ -29,7 +29,7 @@
                 <div class="links">
                     <a href="/">Back to menu</a>
                     <a href="/game/new">New Game</a>
-                    <a href="/instructions">Instructions</a>
+                    <a href="/rules">Rules</a>
                 </div>
             </div>
         </div>
