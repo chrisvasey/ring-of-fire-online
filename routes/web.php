@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/instructions', function () {
+    return view('instructions');
+});
+
 Route::get('/game', function () {
     return Redirect('/');
 });

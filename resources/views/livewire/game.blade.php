@@ -12,6 +12,8 @@
             @foreach ($players as $player)
                 <h4><span class="player-text {{ $player->color }}">{{ $player->name }}@if($player->id == $playerId) (you)@endif</span> @if($player->turnCheck()) - This players turn @endif</h4>
             @endforeach
+            <hr>
+            <p>You can find the rules for each card <a href="/instructions" target="_blank">here</a>, otherwise they will be displayed when each card is pulled.</p>
         </div>
         @if ($state != 'ended')
         <div class="col-md-6 col-xs-12">
