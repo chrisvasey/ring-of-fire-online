@@ -20,6 +20,7 @@ class JoinGame extends Component
     public $partyLeader = false;
     public $joined = false;
     public $leader;
+    public $gameStarted = false;
 
     protected $player;
     protected $game;
@@ -41,7 +42,22 @@ class JoinGame extends Component
 
     public function startGame()
     {
-        # code...
+        //Update the game status
+        $game = Game::find($this->gameId);
+        $game->status = 'in-progress';
+        $game->save();
+        $this->message = "The game is starting..";
+        $this->gameStarted = true;
+
+        //Check if game has started, redirect
+        self::checkIfGameStarted();
+    }
+
+    public function checkIfGameStarted()
+    {
+        if ($this->gameStarted) {
+            return Redirect('/game/'.$this->code.'/play');
+        }
     }
 
     public function changeName()
@@ -78,6 +94,8 @@ class JoinGame extends Component
                 }
             }
         }
+
+        self::checkIfGameStarted();
     }
     public function render()
     {
