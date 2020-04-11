@@ -44,8 +44,7 @@ class JoinGame extends Component
     {
         //Update the game status
         $game = Game::find($this->gameId);
-        $game->status = 'in-progress';
-        $game->save();
+        $game->start();
         $this->message = "The game is starting..";
         $this->gameStarted = true;
 
