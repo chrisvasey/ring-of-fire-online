@@ -102,4 +102,45 @@ html, body {
     background: #98D656;
 }
 
+.player-text.black {
+    color: #173F5F;
+}
 
+.player-text.blue {
+    color: #20639B;
+}
+
+.player-text.cyan {
+    color: #3CAEA3;
+}
+
+.player-text.yellow {
+    color: #F6D55C;
+}
+
+.player-text.orange {
+    color: #ED553b;
+}
+
+.player-text.red {
+    color: #CA3737;
+}
+
+.player-text.green {
+    color: #98D656;
+}
+
+.card-stage {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+    max-width: 350px;
+    .card-placeholder {
+        width: 100%;
+    }
+    #card-wrap {
+        width: 100%;
+        position: relative;
+    }
+}
