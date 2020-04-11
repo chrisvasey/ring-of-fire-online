@@ -42,4 +42,16 @@ class Game extends Model
 
         return $this->cards;
     }
+
+    public function remainingCards()
+    {
+        return $this->cards->where('player_id', null);
+    }
+
+    public function end()
+    {
+        $this->status = 'ended';
+        $this->save();
+        return 'ended';
+    }
 }
