@@ -25,9 +25,12 @@ Route::get('/join', function () {
     return view('join-code');
 });
 
+Route::get('/hsalsdsa/stats', 'StatController@index');
+
 Route::get('/game', function () {
     return Redirect('/');
 });
+
 
 Route::post('/game/join', 'GameController@joinCode');
 Route::get('/game/new', 'GameController@new');
