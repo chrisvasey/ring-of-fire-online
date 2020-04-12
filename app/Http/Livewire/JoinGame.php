@@ -31,13 +31,13 @@ class JoinGame extends Component
 
     public function join(SessionManager $session)
     {
-        if (!$this->playerName || strlen($this->playerName) < 4) {
-            return $this->message = "Name must be at least 4 characters long!";
+        if (!$this->playerName || strlen(trim($this->playerName)) < 3) {
+            return $this->message = "Name must be at least 3 characters long!";
         };
         if ($this->playerName) {
             $game = Game::find($this->gameId);
             $player = new Player;
-            $player->name = $this->playerName;
+            $player->name = trim($this->playerName);
             $player->game_id = $game->id;
             $player->color = $game->getAvailableColor();
             $player->save();
@@ -68,8 +68,8 @@ class JoinGame extends Component
 
     public function changeName()
     {
-        if (!$this->playerName || strlen($this->playerName) < 4) {
-            return $this->message = "Name must be at least 4 characters long!";
+        if (!$this->playerName || strlen($this->playerName) < 3) {
+            return $this->message = "Name must be at least 3 characters long!";
         };
         $player = Player::find($this->playerId);
         if ($player) {

@@ -16,7 +16,7 @@
         @if (!$joined)
             <div class="col-md-6 offset-md-3 col-xs-12">
                 <h3 class="text-center">What is your display name?</h3>
-                <input type="text" class="form-control text-center" wire:model="playerName">
+                <input type="text" class="form-control text-center" wire:model.debounce.500ms="playerName">
                 <button type="button" class="btn btn-primary mt-3" wire:click="join">Join the Game</button>
             </div>
         @endif
@@ -24,7 +24,7 @@
         @if ($joined)
             <div class="col-md-8 offset-md-2 col-xs-12">
                 <h3>Your name:</h3>
-                <input type="text" class="form-control text-center" wire:model="playerName">
+                <input type="text" class="form-control text-center" wire:model.debounce.500ms="playerName">
                 <button type="button" class="btn btn-primary mt-3" wire:click="changeName">Change Name</button>
             </div>
         @endif
