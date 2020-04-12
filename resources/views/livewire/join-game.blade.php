@@ -53,7 +53,7 @@
                 <div class="col-md-3 col-xs-6">
                     <div class="mt-2 mb-4">
                         <div class="avatar {{ $player->color }}">
-                            <h3>{{ strtoupper(mb_substr($player->name, 0, 1, "UTF-8")) }}</h3>
+                            <h3>{{ strtoupper(mb_substr(trim($player->name), 0, 1, "UTF-8")) }}</h3>
                         </div>
                         <h4 class="text-center mt-2">{{ $player->name }}</h4>
                     </div>

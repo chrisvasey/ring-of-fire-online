@@ -65,10 +65,10 @@
         </main>
     </div>
 
-    <footer class="text-center">
+{{--     <footer class="text-center">
         <hr>
         <span class="text-muted">Made for fun by <a href="https://chrisvasey.com" target="_blank">Chris Vasey</a>, if you have any ideas <a href="https://chrisvasey.com/#contact" target="_blank">let me hear them</a>.</span>
-    </footer>
+    </footer> --}}
 
     @livewireScripts
     <!-- JavaScript -->
