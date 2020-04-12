@@ -20,42 +20,42 @@ class Card extends Model
     {
         switch ($this->number) {
             case '2':
-                return '2 is you. You can choose someone to drink';
+                return '2 is you. You can choose someone to drink.';
                 break;
             case '3':
                 return '3 is me. You drink.';
                 break;
             case '4':
-                return "4 is whores (I didn't make the rules..), female players drink";
+                return "4 is whores (I didn't make the rules). Female players drink.";
                 break;
             case '5':
-                return "5 is thumb master, this one is hard to do online so just drink.";
+                return "5 is thumb master. cover your webcam with your thumb whenever you want. The last person to do this must drink, if you aren't on webcam you must all drink.";
                 break;
             case '6':
-                return "6 is dicks. All male players must drink";
+                return "6 is dicks. All male players must drink.";
                 break;
             case '7':
-                return "7 is heven. You can point to the sky, the last player who does this has to drink. If you aren't playing on web cam, say heven at anytime, the last player to say it must drink";
+                return "7 is heaven. You can point to the sky, the last player who does this has to drink. If you aren't playing on web cam, say heven at anytime, the last player to say it must drink.";
                 break;
             case '8':
-                return "8 is mate. Choose another player, they must drink whenever you do";
+                return "8 is mate. Choose another player, they must drink whenever you do.";
                 break;
             case '9':
-                return "9 is rhyme, think of a word, the next player (based on the turn list) must come up with a word to rhyme with this, go through the list. The first player who can't drinks";
+                return "9 is rhyme. think of a word, the next player (based on the turn list) must come up with a word to rhyme with this, go through the list. The first player who can't drink.";
             case '10':
-                return "10 is Categories. Pick a category such as football and you go in a circle and everyone has to say a word that fits with football such as: goal, post, player. Whoever messes up, drinks";
+                return "10 is Categories. Pick a category such as football and you go in a circle and everyone has to say a word that fits with football such as: goal, post, player. Whoever messes up, drinks.";
                 break;
             case 'J':
-                return "Jack is make a rule. You can make up any rule that everyone has to follow, such as you can only drink with your left hand. Everyone (including you) must follow this rule for the whole entire game and if you disobey you must drink";
+                return "Jack is make a rule. You can make up any rule that everyone has to follow, such as you can only drink with your left hand. Everyone (including you) must follow this rule for the whole entire game and if you disobey you must drink.";
                 break;
             case 'Q':
-                return "Queen is question master, until someone next pulls this card, anyone who answers a question you ask must drink";
+                return "Queen is question master. Until someone next pulls this card, anyone who answers a question you ask must drink.";
                 break;
             case 'K':
-                return "This one is hard to do online, you must do a forfit decided by the player with the turn before you";
+                return "This one is hard to do online, you must do a forfit decided by the player with the turn before you.";
                 break;
             case 'A':
-                return "Ace is Waterfall, Everyone should keep drinking until the person who picked the card stops. If you are only on voice, the person who pulled this card must say start when they statrt to drink and stop then they stop";
+                return "Ace is Waterfall. Everyone should keep drinking until the person who picked the card stops. If you are only on voice, the person who pulled this card must say start when they start to drink and stop then they stop.";
                 break;
         }
     }
