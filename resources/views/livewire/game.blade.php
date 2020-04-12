@@ -21,7 +21,13 @@
                         @if ($state == 'ready-to-draw')
                             <h1 class="text-center">It's your turn, good luck!</h1>
                             <div class="text-center">
-                                <button class="btn btn-danger btn-lg mt-2" wire:click="drawCard">Draw Card</button>
+                                @if (!$drawPressed)
+                                    <button class="btn btn-danger btn-lg mt-2" wire:click="drawCard">Draw Card</button>{{-- expr --}}
+                                @endif
+                                @if ($drawPressed)
+                                    <button class="btn btn-danger btn-lg mt-2 disabled" disabled="">Draw Card</button>{{-- expr --}}
+                                @endif
+
                             </div>
                         @endif
                         @if ($state == 'drawn-waiting' && $drawnCard)

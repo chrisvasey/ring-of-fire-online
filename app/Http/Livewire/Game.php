@@ -20,6 +20,7 @@ class Game extends Component
     public $localMessage;
     public $playerId;
     public $gameId;
+    public $drawPressed;
     protected $player;
     protected $game;
 
@@ -27,7 +28,8 @@ class Game extends Component
     public function drawCard()
     {
         self::refeshGame();
-        if ($this->currentPlayer->id == $this->playerId) {
+        if ($this->currentPlayer->id == $this->playerId && !$this->drawPressed) {
+            $this->drawPressed = true;
             $player = Player::find($this->playerId);
             $this->drawnCard = $player->drawCard();
             $this->cardMessage = $player->name.' drew '.$this->drawnCard->value;
@@ -42,6 +44,7 @@ class Game extends Component
         if ($this->cardsRemaining == 0) {
             return self::endGame();
         }
+        $this->drawPressed = false;
         $game = GameObj::find($this->gameId);
         $game->updateState('ready-to-draw');
         $game->nextPlayer();
