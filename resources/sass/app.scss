@@ -63,6 +63,16 @@ footer {
     font-size: 84px;
 }
 
+@media screen and (max-width: 992px) {
+    .title {
+        font-size: 34px;
+    }
+    .links > a {
+        display: block;
+        margin-bottom: 15px;
+    }
+}
+
 .links > a {
     color: #636b6f;
     padding: 0 25px;
