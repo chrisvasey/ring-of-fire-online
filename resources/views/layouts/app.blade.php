@@ -18,7 +18,7 @@
     <meta property="og:url" content="{{ url('/') }}">
     <meta property="og:title" content="Ring Of Fire: Online">
     <meta property="og:description" content="The same brutal drinking game, just online.">
-    <meta property="og:image" content="{{ url('/img/ring-of-fire.png') }}">
+    <meta property="og:image" content="{{ url('/img/ring-of-fire.jpg') }}">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
