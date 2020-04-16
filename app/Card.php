@@ -35,7 +35,7 @@ class Card extends Model
                 return "6 is dicks. All male players must drink.";
                 break;
             case '7':
-                return "7 is heaven. You can point to the sky, the last player who does this has to drink. If you aren't playing on web cam, say heven at anytime, the last player to say it must drink.";
+                return "7 is heaven. You can point to the sky, the last player who does this has to drink. If you aren't playing on web cam, say heaven at anytime, the last player to say it must drink.";
                 break;
             case '8':
                 return "8 is mate. Choose another player, they must drink whenever you do.";
