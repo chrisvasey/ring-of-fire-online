@@ -26,10 +26,10 @@ class Card extends Model
                 return '3 is me. You drink.';
                 break;
             case '4':
-                return "4 is whores (I didn't make the rules). Female players drink.";
+                return "4 is.... well, female players drink.";
                 break;
             case '5':
-                return "5 is thumb master. cover your webcam with your thumb whenever you want. The last person to do this must drink, if you aren't on webcam you must all drink.";
+                return "5 is thumb master. cover your webcam with your thumb whenever you want. The last person to do this must drink. If the player who pulls it isn't on webcam, they must drink.";
                 break;
             case '6':
                 return "6 is dicks. All male players must drink.";
@@ -52,7 +52,7 @@ class Card extends Model
                 return "Queen is question master. Until someone next pulls this card, anyone who answers a question you ask must drink.";
                 break;
             case 'K':
-                return "This one is hard to do online, you must do a forfit decided by the player with the turn before you.";
+                return "This one is hard to do online, you must do a forfeit decided by the player with the turn before you.";
                 break;
             case 'A':
                 return "Ace is Waterfall. Everyone should keep drinking until the person who picked the card stops. If you are only on voice, the person who pulled this card must say start when they start to drink and stop then they stop.";
